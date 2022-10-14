@@ -157,6 +157,37 @@ function keyDown(event) {
         yVelocity = 0;
         xVelocity = 1;
     }
+    /// w key
+    if(event.keyCode === 87) {
+        if (yVelocity === 1)
+            return;
+        yVelocity = -1;
+        xVelocity = 0;
+    }
+    // s key
+    if(event.keyCode === 83) {
+        if (yVelocity === -1)
+            return;
+        yVelocity = 1;
+        xVelocity = 0;
+    }
+    // a key
+    if(event.keyCode === 65) {
+        if (xVelocity === 1)
+            return;
+        yVelocity = 0;
+        xVelocity = -1;
+    }
+
+    // d key
+    if(event.keyCode === 68) {
+        if (xVelocity === -1)
+            return;
+        yVelocity = 0;
+        xVelocity = 1;
+    }
+
+
 }
 
 

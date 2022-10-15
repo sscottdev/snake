@@ -8,6 +8,7 @@ const snakeParts = [];
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const restartBtn = document.getElementById("restart");
+const highscoreView = document.getElementById("highscore")
 const speed = 7;
 let tileCount = 20;
 let tileSize = canvas.width / tileCount - 2;
@@ -21,6 +22,7 @@ let tailLength = 2;
 let score = 0;
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
+highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 
 
 function drawGame() {
@@ -87,6 +89,7 @@ function restart() {
 
 
 
+
 function drawScore() {
     ctx.fillStyle = "white";
     ctx.font = "10px Verdana";
@@ -130,9 +133,21 @@ function checkAppleCollision() {
         tailLength++;
         score++;
         gulpSound.play();
+        highScore();
     }
 }
 
+function highScore() {
+    let highscore = localStorage.getItem("highscore");
+    if (highscore === null) {
+        localStorage.setItem("highscore", score);
+    } else {
+        if (highscore < score) {
+            localStorage.setItem("highscore", score);
+        }
+    }
+    highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore");
+}
 
 document.body.addEventListener("keydown", keyDown);
 

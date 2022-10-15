@@ -7,6 +7,7 @@ class snakePart{
 const snakeParts = [];
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const restartBtn = document.getElementById("restart");
 const speed = 7;
 let tileCount = 20;
 let tileSize = canvas.width / tileCount - 2;
@@ -72,10 +73,18 @@ function isGameOver() {
         ctx.font = "50px Verdana";
         ctx.fillText("Game Over!", canvas.width/6.5, canvas.height/2);
         overSound.play();
+        restartBtn.innerHTML = `<button onclick="restart()">Restart</button>`;
+
     }
 
     return gameOver;
 }
+
+
+function restart() {
+    location.reload();
+}
+
 
 
 function drawScore() {

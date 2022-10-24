@@ -1,3 +1,8 @@
+const {mongoclient} = require('mongodb');
+const express = require('express');
+const app = express();
+const port = 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
 class snakePart{
     constructor(x, y){
         this.x = x;
@@ -22,6 +27,7 @@ let tailLength = 2;
 let score = 0;
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
+let ipDiv = document.getElementById("ip");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 
 
@@ -76,6 +82,7 @@ function isGameOver() {
         ctx.fillText("Game Over!", canvas.width/6.5, canvas.height/2);
         overSound.play();
         restartBtn.innerHTML = `<button onclick="restart()">Restart</button>`;
+
 
     }
 
@@ -214,7 +221,19 @@ function keyDown(event) {
 
 }
 
+function ip() {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '3984098d58mshe329bdcd36f6853p1d8defjsn16e9ebd94eb2',
+            'X-RapidAPI-Host': 'find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com'
+        }
+    };
 
-
-
+    fetch('https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation?apikey=873dbe322aea47f89dcf729dcc8f60e8', options)
+        .then(response => response.json())
+        .then(response => ipDiv.innerText = (response.ip))
+        .catch(err => console.error(err));
+}
+ip()
 drawGame();

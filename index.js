@@ -1,5 +1,3 @@
-
-
 class snakePart{
     constructor(x, y){
         this.x = x;
@@ -22,7 +20,6 @@ let appleX = 5;
 let appleY = 5;
 let tailLength = 2;
 let score = 0;
-let ipDiv = document.getElementById("ip");
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
@@ -79,7 +76,6 @@ function isGameOver() {
         ctx.fillText("Game Over!", canvas.width/6.5, canvas.height/2);
         overSound.play();
         restartBtn.innerHTML = `<button onclick="restart()">Restart</button>`;
-        ip();
 
     }
 
@@ -220,85 +216,5 @@ function keyDown(event) {
 
 
 
-function keyDown(event) {
-    // up arrow
-    if(event.keyCode === 38) {
-        if (yVelocity === 1)
-            return;
-        yVelocity = -1;
-        xVelocity = 0;
-    }
 
-    // down arrow
-    if(event.keyCode === 40) {
-        if (yVelocity === -1)
-            return;
-        yVelocity = 1;
-        xVelocity = 0;
-    }
-    // left arrow
-    if(event.keyCode === 37) {
-        if (xVelocity === 1)
-            return;
-        yVelocity = 0;
-        xVelocity = -1;
-    }
-    // right arrow
-    if(event.keyCode === 39) {
-        if (xVelocity === -1)
-            return;
-        yVelocity = 0;
-        xVelocity = 1;
-    }
-    /// w key
-    if(event.keyCode === 87) {
-        if (yVelocity === 1)
-            return;
-        yVelocity = -1;
-        xVelocity = 0;
-    }
-    // s key
-    if(event.keyCode === 83) {
-        if (yVelocity === -1)
-            return;
-        yVelocity = 1;
-        xVelocity = 0;
-    }
-    // a key
-    if(event.keyCode === 65) {
-        if (xVelocity === 1)
-            return;
-        yVelocity = 0;
-        xVelocity = -1;
-    }
-
-    // d key
-    if(event.keyCode === 68) {
-        if (xVelocity === -1)
-            return;
-        yVelocity = 0;
-        xVelocity = 1;
-    }
-
-
-}
-
-function ip() {
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '3984098d58mshe329bdcd36f6853p1d8defjsn16e9ebd94eb2',
-            'X-RapidAPI-Host': 'find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com'
-        }
-    };
-
-    fetch('https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation?apikey=873dbe322aea47f89dcf729dcc8f60e8', options)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-               document.getElementById('ip').innerHTML = response.ip;
-        })
-        .catch(err => console.error(err));
-}
-ip()
 drawGame();

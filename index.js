@@ -28,9 +28,22 @@ function setSpeed() {
     speedVal = document.getElementById("speedInput").value
     speed = speedVal;
     modal.style.display = "none";
+
 }
 
 
+
+function enableDevTools() {
+    document.getElementById("myBtn").style.display = "block";
+    devWarning.style.display = "none";
+    localStorage.clear()
+    highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
+}
+
+function disableDevTools(){
+    devWarning.style.display = "none";
+    devWarning.style.display = "block";
+}
 
 
 function drawGame() {
@@ -93,6 +106,14 @@ function isGameOver() {
 
 function restart() {
     location.reload();
+/*    canvas.style.display = "block";
+    restartBtn.innerHTML = "";
+    score = 0;
+    xVelocity = 0;
+    yVelocity = 0;
+    headX = 10;
+    headY = 10;
+    drawGame();*/
 }
 
 
@@ -145,6 +166,8 @@ function checkAppleCollision() {
     }
 }
 
+
+
 function highScore() {
     let highscore = localStorage.getItem("highscore");
     if (highscore === null) {
@@ -153,9 +176,13 @@ function highScore() {
         if (highscore < score) {
             localStorage.setItem("highscore", score);
         }
+
     }
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore");
 }
+
+
+
 
 document.body.addEventListener("keydown", keyDown);
 

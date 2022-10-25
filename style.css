@@ -17,6 +17,20 @@ body {
     text-align: center;
 
 }
+.devtools {
+    width: 140px;
+    height: 50px;
+    background-color: #0f0f0f;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 canvas{
     box-shadow: black 20px 10px 50px;
@@ -32,6 +46,19 @@ button {
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
+}
+
+.speedBtn {
+    width: 150px;
+    height: 50px;
+    background-color: #0f0f0f;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    display: none;
 }
 
 input {
@@ -87,6 +114,33 @@ input {
     animation-duration: 0.4s
 }
 
+.dev-content {
+    background-color: #b6b3b3;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.devWarning {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    font-family: monospace;
+    font-color: #ff0000;
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0}
@@ -112,3 +166,4 @@ input {
     text-decoration: none;
     cursor: pointer;
 }
+

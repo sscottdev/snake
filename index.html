@@ -18,7 +18,7 @@
 </div>
 
     <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Set Speed</button>
+    <button class="speedBtn" id="myBtn">Set Speed</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -34,8 +34,17 @@
 
     </div>
 
+<div class="devWarning" id="devWarning">
+    <span class="close"></span>
+    <div class="dev-content">
+        <h2>ENABLING DEV TOOLS WILL RESET YOUR HIGH SCORE, CONTINUE?</h2>
+        <button onclick="enableDevTools()">Yes</button>
+        <button onclick="disableDevTools()">No</button>
+    </div>
+</div>
 
 
+<button id="devBtn" onclick="devTools()" class="devtools">Enable dev tools</button>
 
 <div id="ip">
 </div>
@@ -46,7 +55,7 @@
 
 
 
-
+<link rel="stylesheet" href="style.css">
 <script src="index.js"></script>
 <script src="modal.js"></script>
 </body>

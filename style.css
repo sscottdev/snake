@@ -126,6 +126,15 @@ input {
     animation-duration: 0.4s
 }
 
+.fps {
+    display: none;
+    font-family: monospace;
+    font-size: 40px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
 .devWarning {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

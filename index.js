@@ -20,6 +20,7 @@ let appleX = 5;
 let appleY = 5;
 let tailLength = 2;
 let score = 0;
+let colorInput = document.getElementById("colorInput");
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
@@ -53,8 +54,9 @@ tick();
 function enableDevTools() {
     document.getElementById("myBtn").style.display = "block";
     devWarning.style.display = "none";
-    localStorage.clear()
-    fps.style.display = "block";
+    // localStorage.clear()
+    fps.style.display = "block"
+    localStorage.setItem("highscore", '0');
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 }
 
@@ -123,14 +125,14 @@ function isGameOver() {
 
 function restart() {
     location.reload();
-/*    canvas.style.display = "block";
+/*    headX = 10;
+    headY = 10;
+    canvas.style.display = "block";
     restartBtn.innerHTML = "";
     score = 0;
     xVelocity = 0;
     yVelocity = 0;
-    headX = 10;
-    headY = 10;
-    drawGame();*/
+    drawGame()*/
 }
 
 
@@ -151,7 +153,7 @@ function drawSnake() {
     ctx.fillStyle = "orange";
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 
-    ctx.fillStyle = "green";
+   let defaultColor = ctx.fillStyle = "green";
     for(let i = 0; i < snakeParts.length; i++){
         let part = snakeParts[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
@@ -162,6 +164,17 @@ function drawSnake() {
         snakeParts.shift();
     }
 }
+
+
+function setColor(){
+    let color = colorInput.value;
+    defaultColor = ctx.fillStyle = color;
+    console.log(colorInput.value);
+    colorModal.style.display = "none";
+}
+
+
+
 function changeSnakePosition() {
     headX = headX + xVelocity;
     headY = headY + yVelocity;
@@ -188,7 +201,7 @@ function checkAppleCollision() {
 function highScore() {
     let highscore = localStorage.getItem("highscore");
     if (highscore === null) {
-        localStorage.setItem("highscore", score);
+        localStorage.setItem("highscore", '0');
     } else {
         if (highscore < score) {
             localStorage.setItem("highscore", score);

@@ -1,10 +1,13 @@
 // Get the modal
 var modal = document.getElementById("myModal");
 var devWarning = document.getElementById("devWarning");
+var colorModal = document.getElementById("colorModal");
+
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 var devBtn = document.getElementById("devBtn");
+var colorBtn = document.getElementById("colorBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -16,6 +19,10 @@ btn.onclick = function() {
 
 devBtn.onclick = function() {
     devWarning.style.display = "block";
+}
+
+colorBtn.onclick = function() {
+    colorModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -32,3 +39,9 @@ window.onclick = function(event) {
     if (event.target == devWarning) {
         devWarning.style.display = "none";
     }}
+
+window.onclick = function(event) {
+    if (event.target == colorModal) {
+        colorModal.style.display = "none";
+    }
+}

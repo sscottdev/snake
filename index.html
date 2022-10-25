@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<link rel="stylesheet" href="style.css">
 <h1 class="title">Snake</h1>
 <canvas id="game" width="400" height="400"></canvas>
 <br>
@@ -46,7 +47,29 @@
 </div>
 
 
+<button id="colorBtn" class="setColorBtn">Set Color</button>
+
+<div class="colorModal" id="colorModal">
+    <span class="close"></span>
+    <div class="color-content">
+        <input  default="green" class="colorInput" type="color" id="colorInput">
+        <button onclick="setColor()">Set color</button>
+        <h3 id="colorWarning">Warning: Setting the color to black will make the game unplayable</h3>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
 <button id="devBtn" onclick="devTools()" class="devtools">Enable dev tools (beta)</button>
+
+
+
 
 <div id="ip">
 </div>

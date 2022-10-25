@@ -9,7 +9,7 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const restartBtn = document.getElementById("restart");
 const highscoreView = document.getElementById("highscore")
-const speed = 7;
+let speed = 9;
 let tileCount = 20;
 let tileSize = canvas.width / tileCount - 2;
 let headX = 10;
@@ -23,6 +23,14 @@ let score = 0;
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
+
+function setSpeed() {
+    speedVal = document.getElementById("speedInput").value
+    speed = speedVal;
+    modal.style.display = "none";
+}
+
+
 
 
 function drawGame() {

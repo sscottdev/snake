@@ -17,6 +17,24 @@
 <div id="highscore">
 </div>
 
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Set Speed</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <input type="text" id="speedInput" placeholder="Set the speed">
+            <button onclick="setSpeed()"id="speedButton">Set speed</button>
+            <h3>Anything above 40 will make you immedietly lose the game</h3>
+        </div>
+
+    </div>
+
+
+
 <div id="ip">
 </div>
 
@@ -29,5 +47,6 @@
 
 
 <script src="index.js"></script>
+<script src="modal.js"></script>
 </body>
 </html>

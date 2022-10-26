@@ -16,6 +16,8 @@
 - [ ] Add mobile support
 - [ ] Add a settings button
 
+<img src="media/gif.gif">
+
 ### How to play
  Use WASD or the arrow keys to move the snake.
    > Eat the food to grow longer.

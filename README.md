@@ -11,7 +11,6 @@
 - [X] Add a custom speed feature
 - [ ] Add a custom food color feature
 - [ ] Add a custom gulp sound
-- [ ] Add a pause button
 - [ ] Add a settings button
 
 ### How to play

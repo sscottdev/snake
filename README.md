@@ -9,7 +9,7 @@
 - [X] Add a custom background feature
 - [X] Add a custom tail color feature
 - [X] Add a custom speed feature
-- [ ] Add a custom food color feature
+- [X] Add a custom food color feature
 - [ ] Add a custom gulp sound
 - [ ] Add a custom death sound
 - [ ] Add a custom background music

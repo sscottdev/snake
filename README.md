@@ -11,6 +11,9 @@
 - [X] Add a custom speed feature
 - [ ] Add a custom food color feature
 - [ ] Add a custom gulp sound
+- [ ] Add a custom death sound
+- [ ] Add a custom background music
+- [ ] Add mobile support
 - [ ] Add a settings button
 
 ### How to play

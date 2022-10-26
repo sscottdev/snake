@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
 <link rel="stylesheet" href="style.css">
 <h1 class="title">Snake</h1>
 <canvas id="game" width="400" height="400"></canvas>
-<br>
+<br><div id="ip">
+</div>
 <div id="restart">
 </div>
 <div id="highscore">
@@ -47,7 +50,7 @@
 </div>
 
 
-<button id="colorBtn" class="setColorBtn">Set Color</button>
+<button id="colorBtn" class="setColorBtn">Set Color (borked)</button>
 
 <div class="colorModal" id="colorModal">
     <span class="close"></span>
@@ -58,7 +61,18 @@
     </div>
 </div>
 
+
+<!--
+<button id="soundBtn" class="setSoundBtn">Set Custom Sound</button>
+
+<div class="soundModal" id="soundModal">
+    <span class="close"></span>
+    <div class="sound-content">
+    <h2>Upload a custom sound</h2>
+    <input class="inputSound" type="file" id="soundInput">
+
 </div>
+-->
 
 
 
@@ -66,16 +80,17 @@
 
 
 
-<button id="devBtn" onclick="devTools()" class="devtools">Enable dev tools (beta)</button>
+<button id="devBtn" onclick="devTools()" class="devtools">Enable Dev Tools (BETA)</button>
 
 
 
 
-<div id="ip">
-</div>
+
 
 <div id="leaderboard">
- <h1>Leaderboard:</h1>
+    <h1>Leaderboard:</h1>
+    <div id="leaderboardContent">
+    </div>
 </div>
 
 
@@ -83,5 +98,6 @@
 <link rel="stylesheet" href="style.css">
 <script src="index.js"></script>
 <script src="modal.js"></script>
+</div>
 </body>
 </html>

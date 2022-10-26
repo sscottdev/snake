@@ -9,6 +9,8 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const restartBtn = document.getElementById("restart");
 const highscoreView = document.getElementById("highscore")
+const leaderboardContent = document.getElementById("leaderboardContent");
+
 let speed = 9;
 let tileCount = 20;
 let tileSize = canvas.width / tileCount - 2;
@@ -21,6 +23,7 @@ let appleY = 5;
 let tailLength = 2;
 let score = 0;
 let colorInput = document.getElementById("colorInput");
+let defaultColor = ctx.fillStyle = "green";
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
@@ -57,6 +60,8 @@ function enableDevTools() {
     // localStorage.clear()
     fps.style.display = "block"
     localStorage.setItem("highscore", '0');
+    colorBtn.style.display = "block";
+    soundBtn.style.display = "block";
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 }
 
@@ -115,6 +120,13 @@ function isGameOver() {
         ctx.font = "50px Verdana";
         ctx.fillText("Game Over!", canvas.width/6.5, canvas.height/2);
         overSound.play();
+        getLeaderboard().then(data => {
+            data.forEach((item, index) => {
+                leaderboardContent.innerHTML += `<li>${item.name} - ${item.score}</li>`
+            })
+        })
+
+
         restartBtn.innerHTML = `<button onclick="restart()">Restart</button>`;
 
     }
@@ -122,6 +134,27 @@ function isGameOver() {
     return gameOver;
 }
 
+const getLeaderboard = async () => {
+    const response = await fetch('http://ec2-18-205-191-200.compute-1.amazonaws.com:3000/leaderboard');
+    const data = await response.json();
+    return data;
+}
+
+const saveScore = async () => {
+    const name = document.getElementById("nameInput").value;
+    const score = localStorage.getItem("highscore");
+    const data = { name, score };
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    const response = await fetch('http://ec2-18-205-191-200.compute-1.amazonaws.com:3000/leaderboard', options);
+    const json = await response.json();
+    console.log(json);
+}
 
 function restart() {
     location.reload();
@@ -134,6 +167,14 @@ function restart() {
     yVelocity = 0;
     drawGame()*/
 }
+
+function setCustomSound() {
+    let sound = document.getElementById("soundInput").value;
+    gulpSound.src = sound;
+    modal.style.display = "none";
+}
+
+
 
 
 
@@ -153,7 +194,7 @@ function drawSnake() {
     ctx.fillStyle = "orange";
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 
-   let defaultColor = ctx.fillStyle = "green";
+    defaultColor = ctx.fillStyle = "green";
     for(let i = 0; i < snakeParts.length; i++){
         let part = snakeParts[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
@@ -166,12 +207,14 @@ function drawSnake() {
 }
 
 
+/*
 function setColor(){
     let color = colorInput.value;
     defaultColor = ctx.fillStyle = color;
     console.log(colorInput.value);
     colorModal.style.display = "none";
 }
+*/
 
 
 
@@ -280,6 +323,14 @@ function keyDown(event) {
 }
 
 
-
-
+// const drawLeaderboard = async () => {
+//     let response = await getLeaderboard()
+//     console.log(response)
+// }
+// drawLeaderboard()
+getLeaderboard().then(data => {
+    data.forEach((item, index) => {
+        leaderboardContent.innerHTML += `<li>${item.name} - ${item.score}</li>`
+    })
+})
 drawGame();

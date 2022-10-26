@@ -61,14 +61,12 @@ window.onclick = function(event) {
         colorModal.style.display = "none";
     }
 }
-/*
 
 window.onclick = function(event) {
     if (event.target == soundModal) {
         soundModal.style.display = "none";
     }
 }
-*/
 
 
 window.onclick = function(event) {

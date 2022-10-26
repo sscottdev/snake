@@ -209,6 +209,11 @@ input {
     animation-duration: 0.4s
 }
 
+.bgInput {
+    cursor: default;
+}
+
+
 
 
 /*
@@ -258,6 +263,17 @@ input {
 
 .setSoundBtn {
     display: none;
+}
+
+.bgButton {
+    display: none;
+    height: 50px;
+    width: auto;
+}
+
+.highscore {
+    font-family: monospace;
+    font-size: 20px;
 }
 
 

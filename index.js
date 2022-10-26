@@ -23,7 +23,9 @@ let appleY = 5;
 let tailLength = 2;
 let score = 0;
 let colorInput = document.getElementById("colorInput");
-let defaultColor = ctx.fillStyle = "green";
+let defaultColor = "green"
+let bgColor = "black"
+let bgInput = document.getElementById("bgInput");
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
@@ -61,7 +63,7 @@ function enableDevTools() {
     fps.style.display = "block"
     localStorage.setItem("highscore", '0');
     colorBtn.style.display = "block";
-    soundBtn.style.display = "block";
+    bgButton.style.display = "block";
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 }
 
@@ -76,13 +78,23 @@ function drawGame() {
     if (result) {
         return;
     }
-    setBg()
+    clearScreen()
     checkAppleCollision();
     drawApple();
     drawSnake();
     drawScore();
     setTimeout(drawGame, 1000/ speed);
 
+}
+
+function clearScreen() {
+    ctx.fillStyle = bgColor ;
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+}
+
+function setBg() {
+    bgColor = bgInput.value;
+    bgModal.style.display = "none";
 }
 
 
@@ -168,11 +180,13 @@ function restart() {
     drawGame()*/
 }
 
+/*
 function setCustomSound() {
     let sound = document.getElementById("soundInput").value;
     gulpSound.src = sound;
     modal.style.display = "none";
 }
+*/
 
 
 
@@ -195,7 +209,7 @@ function drawSnake() {
     ctx.fillStyle = "orange";
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 
-    defaultColor = ctx.fillStyle = "green";
+   ctx.fillStyle = defaultColor;
     for(let i = 0; i < snakeParts.length; i++){
         let part = snakeParts[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
@@ -209,21 +223,13 @@ function drawSnake() {
 
 
 
-/*
+
+
 function setColor(){
-    let color = colorInput.value;
-    defaultColor = ctx.fillStyle = color;
-    console.log(colorInput.value);
+    defaultColor = colorInput.value;
     colorModal.style.display = "none";
 }
-*/
 
-
-function setBg() {
-    let color = colorInput.value;
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
 
 
 function changeSnakePosition() {

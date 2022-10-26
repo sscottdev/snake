@@ -25,7 +25,9 @@ let score = 0;
 let colorInput = document.getElementById("colorInput");
 let defaultColor = "green"
 let bgColor = "black"
+let apColor = "red"
 let bgInput = document.getElementById("bgInput");
+let appleInput = document.getElementById("appleInput");
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
@@ -64,6 +66,7 @@ function enableDevTools() {
     localStorage.setItem("highscore", '0');
     colorBtn.style.display = "block";
     bgButton.style.display = "block";
+    appleButton.style.display = "block";
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 }
 
@@ -96,6 +99,8 @@ function setBg() {
     bgColor = bgInput.value;
     bgModal.style.display = "none";
 }
+
+
 
 
 function isGameOver() {
@@ -238,8 +243,13 @@ function changeSnakePosition() {
 }
 
 function drawApple() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = apColor;
     ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+}
+
+function setAppleColor() {
+    apColor = appleInput.value;
+    appleModal.style.display = "none";
 }
 
 function checkAppleCollision() {

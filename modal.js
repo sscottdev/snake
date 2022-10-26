@@ -6,6 +6,7 @@ var colorModal = document.getElementById("colorModal");
 var soundModal = document.getElementById("soundModal");
 */
 var bgModal = document.getElementById("bgModal");
+var appleModal = document.getElementById("appleModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
@@ -13,7 +14,7 @@ var devBtn = document.getElementById("devBtn");
 var colorBtn = document.getElementById("colorBtn");
 var soundBtn = document.getElementById("soundBtn");
 var bgButton = document.getElementById("bgButton");
-
+var appleButton = document.getElementById("appleBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
@@ -38,6 +39,10 @@ soundBtn.onclick = function() {
 
 bgButton.onclick = function() {
     bgModal.style.display = "block";
+}
+
+appleButton.onclick = function() {
+    appleModal.style.display = "block";
 }
 
 
@@ -72,5 +77,11 @@ window.onclick = function(event) {
 window.onclick = function(event) {
     if (event.target == bgModal) {
         bgModal.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == appleModal) {
+        appleModal.style.display = "none";
     }
 }

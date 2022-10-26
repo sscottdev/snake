@@ -182,10 +182,37 @@ input {
     animation-duration: 0.4s
 }
 
+.bgModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    font-family: monospace;
+    font-color: #ff0000;
+}
+
+.bg-content {
+    background-color: #b6b3b3;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
 
 /*
 .soundModal {
-    display: none; !* Hidden by default *!
     position: fixed; !* Stay in place *!
     z-index: 1; !* Sit on top *!
     left: 0;
@@ -198,11 +225,8 @@ input {
     font-family: monospace;
     font-color: #ff0000;
 }
-*/
 
-/*
 .sound-content {
-    display: block;
     background-color: #b6b3b3;
     margin: 15% auto; !* 15% from the top and centered *!
     padding: 20px;
@@ -213,9 +237,8 @@ input {
     animation-name: animatetop;
     animation-duration: 0.4s
 }
-*/
 
-/*.inputSound {
+.inputSound {
     width: 300px;
     height: 50px;
     background-color: #0f0f0f;
@@ -225,7 +248,8 @@ input {
     border-radius: 10px;
     margin: 10px;
     cursor: text;
-}*/
+}
+*/
 
 
 .setColorBtn {

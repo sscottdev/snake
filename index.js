@@ -76,7 +76,7 @@ function drawGame() {
     if (result) {
         return;
     }
-    clearScreen()
+    setBg()
     checkAppleCollision();
     drawApple();
     drawSnake();
@@ -185,10 +185,11 @@ function drawScore() {
     ctx.fillText("Score " + score, canvas.width-50, 10);
 }
 
-function clearScreen() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0,0,canvas.width, canvas.height);
-}
+
+
+
+
+
 
 function drawSnake() {
     ctx.fillStyle = "orange";
@@ -207,6 +208,7 @@ function drawSnake() {
 }
 
 
+
 /*
 function setColor(){
     let color = colorInput.value;
@@ -216,6 +218,12 @@ function setColor(){
 }
 */
 
+
+function setBg() {
+    let color = colorInput.value;
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 
 function changeSnakePosition() {

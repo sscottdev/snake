@@ -5,15 +5,14 @@ var colorModal = document.getElementById("colorModal");
 /*
 var soundModal = document.getElementById("soundModal");
 */
-
+var bgModal = document.getElementById("bgModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 var devBtn = document.getElementById("devBtn");
 var colorBtn = document.getElementById("colorBtn");
-/*
 var soundBtn = document.getElementById("soundBtn");
-*/
+var bgButton = document.getElementById("bgButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -37,6 +36,11 @@ soundBtn.onclick = function() {
 }
 */
 
+bgButton.onclick = function() {
+    bgModal.style.display = "block";
+}
+
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
@@ -57,10 +61,18 @@ window.onclick = function(event) {
         colorModal.style.display = "none";
     }
 }
-
 /*
+
 window.onclick = function(event) {
     if (event.target == soundModal) {
         soundModal.style.display = "none";
     }
-}*/
+}
+*/
+
+
+window.onclick = function(event) {
+    if (event.target == bgModal) {
+        bgModal.style.display = "none";
+    }
+}

@@ -10,6 +10,7 @@ const ctx = canvas.getContext("2d");
 const restartBtn = document.getElementById("restart");
 const highscoreView = document.getElementById("highscore")
 const leaderboardContent = document.getElementById("leaderboardContent");
+const leaderboard = document.getElementById("leaderboard");
 
 let speed = 9;
 let tileCount = 20;
@@ -73,6 +74,8 @@ function enableDevTools() {
     colorBtn.style.display = "block";
     bgButton.style.display = "block";
     appleButton.style.display = "block";
+    nameButton.style.display = "block";
+    leaderboard.style.display = "block";
     highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 }
 
@@ -390,6 +393,14 @@ const gameLoop = () => {
     while (isGamingRunning) {
         drawGame();
         isGameOver();
+        changeSnakePosition();
+        checkAppleCollision();
+        drawScore();
+        highScore();
+        if (isGameOver()) {
+            isGamingRunning = false;
+            break;
+        }
     }
 }
 drawGame();

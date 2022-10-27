@@ -50,6 +50,26 @@ button {
     cursor: pointer;
 }
 
+.leaderboard {
+    display: none;
+    /*put this to the middle right*/
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #0f0f0f;
+    color: white;
+    font-size: 20px;
+    height: 230px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.leaderboardContent {
+height: available;
+}
+
 .speedBtn {
     width: 150px;
     height: 50px;
@@ -275,6 +295,9 @@ input {
     display: none;
 }
 
+.nameButton {
+    display: none;
+}
 
 
 

@@ -28,8 +28,11 @@ let bgColor = "black"
 let apColor = "red"
 let bgInput = document.getElementById("bgInput");
 let appleInput = document.getElementById("appleInput");
+let nameInput = document.getElementById("nameInput");
+let name = "Player"
 const gulpSound = new Audio("gulp.mp3");
 const overSound = new Audio("game-over.mp3");
+let counter = 0;
 highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
 
 function setSpeed() {
@@ -58,6 +61,9 @@ tick();
 
 
 
+
+
+
 function enableDevTools() {
     document.getElementById("myBtn").style.display = "block";
     devWarning.style.display = "none";
@@ -81,6 +87,7 @@ function drawGame() {
     if (result) {
         return;
     }
+    console.log(counter++)
     clearScreen()
     checkAppleCollision();
     drawApple();
@@ -157,8 +164,13 @@ const getLeaderboard = async () => {
     return data;
 }
 
+
+function setName() {
+    name = nameInput.value;
+    nameModal.style.display = "none";
+}
+
 const saveScore = async () => {
-    const name = document.getElementById("nameInput").value;
     const score = localStorage.getItem("highscore");
     const data = { name, score };
     const options = {
@@ -172,6 +184,9 @@ const saveScore = async () => {
     const json = await response.json();
     console.log(json);
 }
+
+
+
 
 function restart() {
     location.reload();
@@ -283,6 +298,12 @@ function highScore() {
 
 document.body.addEventListener("keydown", keyDown);
 
+/*if (nameModal.display.style === "block") {
+
+
+}*/
+
+
 function keyDown(event) {
     // up arrow
     if(event.keyCode === 38) {
@@ -357,4 +378,18 @@ getLeaderboard().then(data => {
         leaderboardContent.innerHTML += `<li>${item.name} - ${item.score}</li>`
     })
 })
+
+let isGamingRunning = false;
+
+const startGame = () => {
+    isGamingRunning = true;
+    gameLoop();
+}
+
+const gameLoop = () => {
+    while (isGamingRunning) {
+        drawGame();
+        isGameOver();
+    }
+}
 drawGame();

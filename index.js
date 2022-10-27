@@ -90,7 +90,7 @@ function drawGame() {
     if (result) {
         return;
     }
-    console.log(counter++)
+/*    console.log(counter++)*/
     clearScreen()
     checkAppleCollision();
     drawApple();

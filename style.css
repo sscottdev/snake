@@ -205,6 +205,10 @@ input {
     animation-duration: 0.4s
 }
 
+.colorInput {
+    cursor: pointer;
+}
+
 .bgModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -289,7 +293,7 @@ input {
 
 
 .bgInput {
-    cursor: default;
+    cursor: pointer;
 }
 
 .appleBtn {
@@ -298,6 +302,10 @@ input {
 
 .nameButton {
     display: none;
+}
+
+.appleInput {
+    cursor: pointer;
 }
 
 

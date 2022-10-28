@@ -40,6 +40,9 @@ function setSpeed() {
     speedVal = document.getElementById("speedInput").value
     speed = speedVal;
     modal.style.display = "none";
+    if (speedVal == 0) {
+        speed = 9;
+    }
 
 }
 

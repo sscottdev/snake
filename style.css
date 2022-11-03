@@ -19,6 +19,29 @@ body {
 
 }
 
+#popup {
+    background-color: #fc4242;
+    border: #72f3db solid 2px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#popup.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
 
 .devtools {
     width: 150px;

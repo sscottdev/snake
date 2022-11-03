@@ -44,7 +44,19 @@ function setSpeed() {
         speed = 9;
     }
 
+    systemMessage(`Set speed to ${speedVal}`)
+
 }
+
+
+function systemMessage(message) {
+    popup.innerHTML = message
+    popup.className = "show"
+    setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
+}
+
+
+
 
 var fps = document.getElementById("fps");
 var startTime = Date.now();
@@ -111,6 +123,7 @@ function clearScreen() {
 function setBg() {
     bgColor = bgInput.value;
     bgModal.style.display = "none";
+    systemMessage(`Set background color to ${bgInput.value} `)
 }
 
 
@@ -174,6 +187,7 @@ const getLeaderboard = async () => {
 function setName() {
     name = nameInput.value;
     nameModal.style.display = "none";
+    systemMessage(`Username set to ${nameInput.value}`)
 }
 
 const saveScore = async () => {
@@ -254,6 +268,7 @@ function drawSnake() {
 function setColor(){
     defaultColor = colorInput.value;
     colorModal.style.display = "none";
+    systemMessage(`Set tail color to ${colorInput.value}`)
 }
 
 
@@ -271,6 +286,7 @@ function drawApple() {
 function setAppleColor() {
     apColor = appleInput.value;
     appleModal.style.display = "none";
+    systemMessage(`Set apple color to ${appleInput.value}`)
 }
 
 function checkAppleCollision() {
@@ -284,126 +300,136 @@ function checkAppleCollision() {
     }
 }
 
+    function highScore() {
+        let highscore = localStorage.getItem("highscore");
+        if (highscore === null) {
+            localStorage.setItem("highscore", '0');
+        } else {
+            if (highscore < score) {
+                localStorage.setItem("highscore", score);
+            }
+
+        }
+        highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore");
+    }
 
 
-function highScore() {
-    let highscore = localStorage.getItem("highscore");
-    if (highscore === null) {
-        localStorage.setItem("highscore", '0');
-    } else {
-        if (highscore < score) {
-            localStorage.setItem("highscore", score);
+    document.body.addEventListener("keydown", keyDown);
+
+    /*if (nameModal.display.style === "block") {
+
+
+    }*/
+
+
+    function keyDown(event) {
+        // up arrow
+        if (event.keyCode === 38) {
+            if (yVelocity === 1)
+                return;
+            yVelocity = -1;
+            xVelocity = 0;
         }
 
-    }
-    highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore");
-}
+        // down arrow
+        if (event.keyCode === 40) {
+            if (yVelocity === -1)
+                return;
+            yVelocity = 1;
+            xVelocity = 0;
+        }
+        // left arrow
+        if (event.keyCode === 37) {
+            if (xVelocity === 1)
+                return;
+            yVelocity = 0;
+            xVelocity = -1;
+        }
+        // right arrow
+        if (event.keyCode === 39) {
+            if (xVelocity === -1)
+                return;
+            yVelocity = 0;
+            xVelocity = 1;
+        }
+        /// w key
+        if (event.keyCode === 87) {
+            if (yVelocity === 1)
+                return;
+            yVelocity = -1;
+            xVelocity = 0;
+        }
+        // s key
+        if (event.keyCode === 83) {
+            if (yVelocity === -1)
+                return;
+            yVelocity = 1;
+            xVelocity = 0;
+        }
+        // a key
+        if (event.keyCode === 65) {
+            if (xVelocity === 1)
+                return;
+            yVelocity = 0;
+            xVelocity = -1;
+        }
+
+        // d key
+        if (event.keyCode === 68) {
+            if (xVelocity === -1)
+                return;
+            yVelocity = 0;
+            xVelocity = 1;
+        }
 
 
-
-
-document.body.addEventListener("keydown", keyDown);
-
-/*if (nameModal.display.style === "block") {
-
-
-}*/
-
-
-function keyDown(event) {
-    // up arrow
-    if(event.keyCode === 38) {
-        if (yVelocity === 1)
-            return;
-        yVelocity = -1;
-        xVelocity = 0;
-    }
-
-    // down arrow
-    if(event.keyCode === 40) {
-        if (yVelocity === -1)
-            return;
-        yVelocity = 1;
-        xVelocity = 0;
-    }
-    // left arrow
-    if(event.keyCode === 37) {
-        if (xVelocity === 1)
-            return;
-        yVelocity = 0;
-        xVelocity = -1;
-    }
-    // right arrow
-    if(event.keyCode === 39) {
-        if (xVelocity === -1)
-            return;
-        yVelocity = 0;
-        xVelocity = 1;
-    }
-    /// w key
-    if(event.keyCode === 87) {
-        if (yVelocity === 1)
-            return;
-        yVelocity = -1;
-        xVelocity = 0;
-    }
-    // s key
-    if(event.keyCode === 83) {
-        if (yVelocity === -1)
-            return;
-        yVelocity = 1;
-        xVelocity = 0;
-    }
-    // a key
-    if(event.keyCode === 65) {
-        if (xVelocity === 1)
-            return;
-        yVelocity = 0;
-        xVelocity = -1;
     }
 
-    // d key
-    if(event.keyCode === 68) {
-        if (xVelocity === -1)
-            return;
-        yVelocity = 0;
-        xVelocity = 1;
-    }
-
-
-}
-
+    function swipeControls() {
+        let touchstartX = 0
+let touchendX = 0
+    
 
 // const drawLeaderboard = async () => {
 //     let response = await getLeaderboard()
 //     console.log(response)
 // }
 // drawLeaderboard()
-getLeaderboard().then(data => {
-    data.forEach((item, index) => {
-        leaderboardContent.innerHTML += `<li>${item.name} - ${item.score}</li>`
+    getLeaderboard().then(data => {
+        data.forEach((item, index) => {
+            leaderboardContent.innerHTML += `<li>${item.name} - ${item.score}</li>`
+        })
     })
-})
 
-let isGamingRunning = false;
+    let isGamingRunning = false;
 
-const startGame = () => {
-    isGamingRunning = true;
-    gameLoop();
-}
+    const startGame = () => {
+        isGamingRunning = true;
+        gameLoop();
+    }
 
-const gameLoop = () => {
-    while (isGamingRunning) {
-        drawGame();
-        isGameOver();
-        changeSnakePosition();
-        checkAppleCollision();
-        drawScore();
-        highScore();
-        if (isGameOver()) {
-            isGamingRunning = false;
-            break;
+    const gameLoop = () => {
+        while (isGamingRunning) {
+            drawGame();
+            isGameOver();
+            changeSnakePosition();
+            checkAppleCollision();
+            drawScore();
+            highScore();
+            if (isGameOver()) {
+                isGamingRunning = false;
+                break;
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
 drawGame();

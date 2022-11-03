@@ -44,7 +44,11 @@ function setSpeed() {
         speed = 9;
     }
 
-    systemMessage(`Set speed to ${speedVal}`)
+    if (speedVal == 0) {
+        systemMessage("Invalid number, set to default")
+    } else {
+        systemMessage(`Speed set to ${speedVal}`)
+    }
 
 }
 

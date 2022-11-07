@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+
+<canvas id="canvas" width="400" height="200"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext("2d");
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    const tile = 100;
+    let  maxX= canvasWidth - tile
+    let maxY = canvasHeight - tile;
+    let x = 0;
+    let y = 0;
+    let step = 10;
+
+
+    /* top: y == 0
+    * bottom: y == maxY
+    * left:  x == 0
+    * right: x == maxX
+    *   */
+
+    function drawRect() {
+        ctx.fillStyle = "red";
+        ctx.fillRect(x,y, tile, tile);
+
+
+    }
+
+    function gameLoop() {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+        if(y < maxY){
+            y += step;
+        }
+        if(x <= maxX - step){
+
+            x+=step;
+        }
+
+
+        drawRect()
+        setTimeout(gameLoop, 100)
+    }
+    gameLoop()
+</script>
+</body>
+</html>

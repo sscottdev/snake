@@ -11,9 +11,9 @@
 <body>
 
 
-<link rel="stylesheet" href="style.css">
 <h1 class="title">Snake</h1>
-<canvas id="game" width="400" height="400"></canvas>
+<!--<canvas id="game" width="400" height="400"></canvas>-->
+<div id="loadGame"></div>
 <br><div id="ip">
 </div>
 <div id="restart">
@@ -21,22 +21,23 @@
 <div class="highscore" id="highscore">
 </div>
 
-    <!-- Trigger/Open The Modal -->
-    <button class="speedBtn" id="myBtn">Set Speed</button>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+<!-- Trigger/Open The Modal -->
+<button class="speedBtn" id="myBtn">Set Speed</button>
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <input type="number" id="speedInput" placeholder="Set the speed">
-            <button onclick="setSpeed()"id="speedButton">Set speed</button>
-            <h3>Anything above 50 will make you immediately lose the game</h3>
-            <h4>Default speed is 9</h4>
-        </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span onclick="spanCLose()"class="close">&times;</span>
+        <input type="number" id="speedInput" placeholder="Set the speed">
+        <button onclick="setSpeed()"id="speedButton">Set speed</button>
+        <h3>Anything above 50 will make you immediately lose the game</h3>
+        <h4>Default speed is 9</h4>
     </div>
+
+</div>
 
 
 <!-- Trigger/Open The Modal-->
@@ -64,7 +65,7 @@
 
     <!-- Modal content -->
     <div class="name-content">
-    <!--Input username-->
+        <!--Input username-->
         <span class="close">&times;</span>
         <input  class="nameInput" type="text" id="nameInput" placeholder="Set the username">
         <button onclick="setName()"id="nameButtonn">Set username</button>
@@ -152,7 +153,8 @@
 
 
 <link rel="stylesheet" href="style.css">
-<script src="index.js"></script>
+<script src="snake.js"></script>
+<script src="refactor.js"></script>
 <script src="modal.js"></script>
 </div>
 </body>

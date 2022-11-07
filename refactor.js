@@ -14,7 +14,7 @@ let canvas;
 let canvasWidth = 600;
 let canvasHeight = 600;
 let fps = 10;
-let tileCount = 20;
+let tileCount = 24;
 let tileSize = canvasWidth / tileCount - 2;
 let headX = 10;
 let headY = 10;
@@ -35,9 +35,7 @@ const overSound = new Audio("game-over.mp3");
 
 
 
-
-
-
+/*-----------------Essentials-------------------*/
 const drawSnake = () => {
     ctx.fillStyle = "orange";
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
@@ -88,9 +86,6 @@ const initializeGame = () => {
 }
 
 initializeGame()
-
-
-
 const startGame = () => {
     isGamingRunning = true;
     gameLoop();
@@ -99,25 +94,22 @@ const startGame = () => {
 function changeSnakePosition() {
     headX = headX + xVelocity;
     headY = headY + yVelocity;
-    console.log(headX)
+    console.log("HeadX: " + headX + " HeadY: " + headY)
+
 }
 
 
 const boundaryCollisionCheck = () => {
-    // check y border collisions
-    if (headY < 0 || headY > tileCount - 1) {
+    /*    console.log("Border colison check " + (canvasWidth / tileCount - 10))*/
+    /*Make a boundary collison check but its dynamic to the canvas size*/
+    if (headX < 1 || headX > canvasWidth / tileCount - 1 || headY < 1 || headY > canvasHeight / tileCount - 1){
+        console.log("Game Over")
         return true;
     }
-
-    // check x border collisions
-    if (headX < 0 || headX > canvasWidth / tileCount - 10) {
-        return true;
-    }
-
+    return false;
 }
 
 const selfCollisionCheck = () => {
-
 
 }
 
@@ -170,32 +162,33 @@ function setAppleColor() {
     apColor = appleInput.value;
     appleModal.style.display = "none";
 }
+/*-----------------------------------------------------*/
 
 
-// controller
-
+// Controller
+/*-----------------------------------------------------*/
 const keyDown = (event) =>{
 
     switch (event.keyCode){
         //spacebar
         case 32: startGame();
-        break;
+            break;
         // up arrow || 'w'
         case 38:
         case 87: yVelocity === 1 ? yVelocity = 1 : yVelocity = -1; xVelocity = 0;
-        break;
+            break;
         //left arrow or 'a'
         case 65:
         case 37: xVelocity === 1 ? xVelocity = 1: xVelocity = -1; yVelocity = 0;
-        break;
+            break;
         // down arrow or 's'
         case 40:
         case 83:  yVelocity === -1 ? yVelocity = -1 : yVelocity = 1; xVelocity = 0;
-        break;
+            break;
         // right arrow or 'd'
         case 39:
         case 68: xVelocity === -1 ? xVelocity = -1: xVelocity = 1; yVelocity = 0;
-        break;
+            break;
 
 
     }

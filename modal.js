@@ -7,7 +7,8 @@ var soundModal = document.getElementById("soundModal");
 */
 var bgModal = document.getElementById("bgModal");
 var appleModal = document.getElementById("appleModal");
-var nameModal = document.getElementById("nameModal");
+/*var nameModal = document.getElementById("nameModal");*/
+var sizeModal = document.getElementById("sizeModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
@@ -16,11 +17,17 @@ var colorBtn = document.getElementById("colorBtn");
 var soundBtn = document.getElementById("soundBtn");
 var bgButton = document.getElementById("bgButton");
 var appleButton = document.getElementById("appleBtn");
-var nameButton = document.getElementById("nameButton");
+/*var nameButton = document.getElementById("nameButton");*/
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var sizeBtn = document.getElementById("sizeBtn");
+
 
 // When the user clicks on the button, open the modal
+
+sizeBtn.onclick = function() {
+    sizeModal.style.display = "block";
+}
 
 
 btn.onclick = function() {
@@ -51,9 +58,11 @@ appleButton.onclick = function() {
     appleModal.style.display = "block";
 }
 
+/*
 nameButton.onclick = function() {
     nameModal.style.display = "block";
 }
+*/
 
 // When the user clicks on <span> (x), close the modal
 
@@ -69,9 +78,11 @@ span.onclick = function() {
     colorModal.style.display = "none";
 }
 
+/*
 span.onclick = function() {
     nameModal.style.display = "none";
 }
+*/
 
 span.onclick = function() {
     bgModal.style.display = "none";
@@ -84,6 +95,7 @@ span.onclick = function() {
 devWarning.onclick = function() {
     devWarning.style.display = "none";
 }
+
 
 
 
@@ -123,9 +135,14 @@ window.onclick = function(event) {
     }
 }
 
-window.onclick = function(event) {
+/*window.onclick = function(event) {
     if (event.target === nameModal) {
         nameModal.style.display = "none";
     }
-}
+}*/
 
+window.onclick = function(event) {
+    if (event.target === sizeModal) {
+        sizeModal.style.display = "none";
+    }
+}

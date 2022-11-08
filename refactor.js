@@ -69,6 +69,7 @@ const draw = () => {
     drawSnake()
     drawApple()
     drawScore()
+    highscore()
 }
 
 const createCanvas = () => {
@@ -89,6 +90,7 @@ initializeGame()
 const startGame = () => {
     isGamingRunning = true;
     gameLoop();
+    document.getElementById("spacebar").style.display = "none";
 }
 
 function changeSnakePosition() {
@@ -102,19 +104,30 @@ function changeSnakePosition() {
 const boundaryCollisionCheck = () => {
     /*    console.log("Border colison check " + (canvasWidth / tileCount - 10))*/
     /*Make a boundary collison check but its dynamic to the canvas size*/
-    if (headX < 1 || headX > canvasWidth / tileCount - 1 || headY < 1 || headY > canvasHeight / tileCount - 1){
-        console.log("Game Over")
+    if (headX < 1 || headX > canvasWidth / tileCount - 2 || headY < 1 || headY > canvasHeight / tileCount - 2){
+
         return true;
     }
     return false;
 }
 
 const selfCollisionCheck = () => {
+    for(let i = 0; i < snakeParts.length; i++){
+        let part = snakeParts[i];
+        if(part.x === headX && part.y === headY){
+            return true;
+        }
+    }
+    return false;
 
 }
 
 const gameOverCheck = () => {
     if(boundaryCollisionCheck() || selfCollisionCheck()) {
+        ctx.fillStyle = "white";
+        ctx.font = "50px Verdana";
+        ctx.fillText("Game Over!", canvas.width/6.5, canvas.height/2);
+        overSound.play();
         isGamingRunning = false;
     }
 }
@@ -126,6 +139,7 @@ const checkAppleCollision = () => {
         tailLength++;
         score++;
         gulpSound.play();
+        highscore()
     }
 }
 
@@ -166,7 +180,6 @@ function setAppleColor() {
 
 
 // Controller
-/*-----------------------------------------------------*/
 const keyDown = (event) =>{
 
     switch (event.keyCode){
@@ -193,5 +206,97 @@ const keyDown = (event) =>{
 
     }
 }
+
+
+
+/*Features*/
+
+function enableDevTools() {
+    let devWarning = document.getElementById("devWarning");
+    let fps = document.getElementById("fps");
+    let colorBtn = document.getElementById("colorBtn");
+    let bgButton = document.getElementById("bgButton");
+    let appleButton = document.getElementById("appleBtn");
+    let nameButton = document.getElementById("nameButton")
+    let sizeButton = document.getElementById("sizeBtn")
+
+
+    document.getElementById("myBtn").style.display = "block";
+    devWarning.style.display = "none";
+    // localStorage.clear()
+    fps.style.display = "block"
+    localStorage.setItem("highscore", '0');
+    colorBtn.style.display = "block";
+    bgButton.style.display = "block";
+    appleButton.style.display = "block";
+    leaderboard.style.display = "block";
+    sizeButton.style.display = "block";
+    highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore")
+}
+
+function setSpeed() {
+    speedVal = document.getElementById("speedInput").value
+    fps = speedVal;
+    modal.style.display = "none";
+    if (speedVal == 0) {
+        speed = 9;
+    }
+
+    if (speedVal == 0) {
+        systemMessage("Invalid number, set to default")
+    } else {
+        systemMessage(`Speed set to ${speedVal}`)
+    }
+
+}
+
+function systemMessage(message) {
+    popup.innerHTML = message
+    popup.className = "show"
+    setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
+}
+
+function setBg() {
+    bgColor = bgInput.value;
+    bgModal.style.display = "none";
+}
+
+function setColor() {
+    defaultColor = colorInput.value;
+    colorModal.style.display = "none";
+}
+
+function highscore() {
+    let highscore = localStorage.getItem("highscore");
+    if (highscore === null) {
+        localStorage.setItem("highscore", '0');
+    } else {
+        if (highscore < score) {
+            localStorage.setItem("highscore", score);
+        }
+
+    }
+    highscoreView.innerHTML = "Highscore: " + localStorage.getItem("highscore");
+}
+
+function setGameSize() {
+let widthInput = document.getElementById("widthInput");
+let heightInput = document.getElementById("heightInput");
+
+canvas.width = widthInput.value;
+canvas.height = heightInput.value;
+canvasWidth = canvas.width;
+canvasHeight = canvas.height;
+console.log(canvasWidth);
+console.log(canvasHeight);
+sizeModal.style.display = "none";
+systemMessage("Size changed")
+
+
+}
+
+
+
+
 
 document.body.addEventListener("keydown", keyDown);

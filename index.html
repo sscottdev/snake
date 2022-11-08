@@ -20,6 +20,9 @@
 </div>
 <div class="highscore" id="highscore">
 </div>
+<div id="spacebar" class="spacebar">
+    <h1>Press spacebar to start</h1>
+</div>
 
 
 <!-- Trigger/Open The Modal -->
@@ -58,14 +61,15 @@
 </div>
 
 
+<!--
 <button class="nameButton" id="nameButton">Set Username</button>
 
-<!-- The Modal -->
+&lt;!&ndash; The Modal &ndash;&gt;
 <div id="nameModal" class="nameModal">
 
-    <!-- Modal content -->
+    &lt;!&ndash; Modal content &ndash;&gt;
     <div class="name-content">
-        <!--Input username-->
+        &lt;!&ndash;Input username&ndash;&gt;
         <span class="close">&times;</span>
         <input  class="nameInput" type="text" id="nameInput" placeholder="Set the username">
         <button onclick="setName()"id="nameButtonn">Set username</button>
@@ -76,6 +80,7 @@
 
 </div>
 
+-->
 
 
 
@@ -132,6 +137,21 @@
 -->
 
 
+<button id="sizeBtn" class="setSizeBtn">Set Size</button>
+<div class="sizeModal" id="sizeModal">
+<span class="close"></span>
+<div class="size-content">
+    <input default="400" class="heightInput" type="number" id="heightInput">
+    <input default="400" class="widthInput" type="number" id="widthInput">
+    <button onclick="setGameSize()">Set Size</button>
+    <h3 id="sizeWarning">Making the game space too big will make the game unplayable</h3>
+</div>
+</div>
+
+
+
+
+
 
 
 
@@ -152,7 +172,6 @@
 
 
 
-<link rel="stylesheet" href="style.css">
 <script src="snake.js"></script>
 <script src="refactor.js"></script>
 <script src="modal.js"></script>
